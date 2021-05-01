@@ -14,11 +14,13 @@ ActiveRecord::Schema.define(version: 20210430070324) do
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
-    t.integer "size"
+    t.string "size"
     t.text "description"
     t.float "base_price", limit: 24
     t.float "tax", limit: 24
     t.json "images"
+    t.datetime "expiry_on"
+    t.float "total_price", limit: 24
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

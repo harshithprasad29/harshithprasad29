@@ -10,38 +10,51 @@
       </ul>
     </div>
   <% end %>
+  <div class="col-md-4 col-md-offset-2" style="padding-bottom: 50px;">
+    <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, id: :product_name, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :product_name %>
-  </div>
+    <div class="form-group">
+      <%= form.label :size %>
+      <%= form.select :size, Product::SIZE ,id: :product_size, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :size %>
-    <%= form.number_field :size, id: :product_size %>
-  </div>
+    <div class="form-group">
+      <%= form.label :description %>
+      <%= form.text_area :description, id: :product_description, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :product_description %>
-  </div>
+    <div class="form-group">
+      <%= form.label :base_price %>
+      <%= form.text_field :base_price, id: :product_base_price, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :base_price %>
-    <%= form.text_field :base_price, id: :product_base_price %>
-  </div>
+    <div class="form-group">
+      <%= form.label :tax %>
+      <%= form.text_field :tax, id: :product_tax, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :tax %>
-    <%= form.text_field :tax, id: :product_tax %>
-  </div>
+    <div class="form-group">
+      <%= form.label :images %>
+      <%= form.file_field :images, id: :product_images, multiple: true %>
+    </div>
 
-  <div class="field">
-    <%= form.label :images %>
-    <%= form.file_field :images, id: :product_images, multiple: true %>
+    <div class="form-group">
+      <%= form.submit "Submit", class: "btn btn-primary" %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <% if @product.images.present? %>
+  <strong>Added Images:</strong>
+    <div class="row">
+      <% @product.images.each do |image| %>
+        <div class="col-md-12 col-md-3">
+          <a href="#" class="thumbnail">
+            <img src="<%= image.url %>">
+          </a>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
